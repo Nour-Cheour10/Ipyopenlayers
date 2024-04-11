@@ -1,0 +1,18 @@
+{
+  "files": [],
+  "include": ["src/**/*.js"], // Inclut tous les fichiers JavaScript dans le répertoire src et ses sous-répertoires
+  "exclude": ["node_modules"],
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  }
+}
+// tsc --init
+// tsc --watch
+// tsc --watch --pretty
+// tsc --watch --pretty --noEmit
+// tsc --watch --pretty --noEmit --strict
