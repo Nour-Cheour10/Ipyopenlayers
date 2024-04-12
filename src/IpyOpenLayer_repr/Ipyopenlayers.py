@@ -9,12 +9,12 @@ try:
 except importlib.metadata.PackageNotFoundError:
     __version__ = "unknown"
 
-DIMS = tt.List(tt.Unicode("nour"))
+DIMS = tt.List(tt.Unicode())
 
 class Map (anywidget.AnyWidget):
 
     _esm = pathlib.Path().parent /"src"/"IpyOpenLayer_repr"/ "static" / "widget.js"
-    DIMS = tt.Unicode("hello").tag(sync=True)
+    DIMS = tt.Unicode("").tag(sync=True)
 
 
     def __init__(self):
