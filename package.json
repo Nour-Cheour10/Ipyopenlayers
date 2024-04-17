@@ -14,7 +14,12 @@
   "scripts": {
     "start": "vite",
     "build": "vite build",
-    "esbuild": "esbuild --minify --format=esm --bundle --outdir=src/xarray_fancy_repr/static js/widget.js"
-    
-  }
+    "esobuild": "esbuild --minify --format=esm --bundle --outdir=src/IpyOpenLayer_repr/static js/widget.js",
+    "ess-build": "esbuild --minify --format=esm --bundle --outdir=src/IpyOpenLayer_repr/static js/Cartodb.js",
+    "es-build": "esbuild --minify --format=esm --bundle --outdir=src/IpyOpenLayer_repr/static js/layer.js",
+    "esbuild": "esbuild --minify --format=esm --bundle --outdir=src/IpyOpenLayer_repr/static js/widget.js && esbuild --minify --format=esm --bundle --outdir=src/IpyOpenLayer_repr/static js/Cartodb.js && esbuild --minify --format=esm --bundle --outdir=src/IpyOpenLayer_repr/static js/layer.js"
+
 }
+
+
+  }
