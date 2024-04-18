@@ -24,4 +24,4 @@ function render({ model, el }) {
    /*console.log(map.getAllLayers());*/
 }
 
-export default { render };
+export default { model, el };
