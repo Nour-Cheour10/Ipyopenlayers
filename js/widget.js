@@ -5,7 +5,8 @@ import View from 'ol/View.js';
 import 'ol/ol.css';
 
 function render({ model, el }) {
-  el.style.height = '600px';
+  el.style.height = '400px';
+  console.log(el.style.height);
   const map = new Map({
     layers: [
       new TileLayer({
@@ -18,7 +19,9 @@ function render({ model, el }) {
       zoom: 2,
     }),
   });
-   console.log(map.getAllLayers());
+    console.log(el.style.height);
+
+   /*console.log(map.getAllLayers());*/
 }
 
 export default { render };

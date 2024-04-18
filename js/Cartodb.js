@@ -4,8 +4,6 @@ import View from 'ol/View.js';
 import OSM from 'ol/source/OSM.js';
 import CartoDB from 'ol/source/CartoDB.js';
 import 'ol/ol.css';
-
-
 function render({ model, el }) {
     const mapConfig = {
       'layers': [
