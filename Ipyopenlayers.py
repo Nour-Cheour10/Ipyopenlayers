@@ -11,7 +11,7 @@ try:
 except importlib.metadata.PackageNotFoundError:
     __version__ = "unknown"
 
-class Map (anywidget.AnyWidget):  
+class Maps (anywidget.AnyWidget):  
     _esm = pathlib.Path("src/IpyOpenLayer_repr/static/widget.js")
     _css = pathlib.Path("src/IpyOpenLayer_repr/static/widget.css")
     DIMS = tt.Unicode().tag(sync=True)
