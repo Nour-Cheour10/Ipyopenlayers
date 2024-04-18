@@ -2,6 +2,7 @@ import pathlib
 import importlib.metadata
 import anywidget
 import traitlets as tt
+
 from IPython.display import display, HTML
 import json
 
@@ -11,12 +12,12 @@ try:
 except importlib.metadata.PackageNotFoundError:
     __version__ = "unknown"
 
-class Maps (anywidget.AnyWidget):  
+class Map (anywidget.AnyWidget):  
     _esm = pathlib.Path("src/IpyOpenLayer_repr/static/widget.js")
     _css = pathlib.Path("src/IpyOpenLayer_repr/static/widget.css")
-    DIMS = tt.Unicode().tag(sync=True)
+    DIMS = tt.Unicode("600px").tag(sync=True)
 
-    def __init__(self):
+'''    def __init__(self):
         super().__init__()
     
     def set_model_id(self, model_id):
@@ -32,7 +33,7 @@ class Maps (anywidget.AnyWidget):
             m.addLayer(layer);
         """))   
          
-    '''def get_all_layers():
+     def get_all_layers():
         return super().getAllLayers()
 '''
         
