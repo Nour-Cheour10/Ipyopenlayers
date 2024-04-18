@@ -15,7 +15,9 @@ except importlib.metadata.PackageNotFoundError:
 class Map (anywidget.AnyWidget):  
     _esm = pathlib.Path("src/IpyOpenLayer_repr/static/widget.js")
     _css = pathlib.Path("src/IpyOpenLayer_repr/static/widget.css")
-    DIMS = tt.Unicode("600px").tag(sync=True)
+    DIMS = tt.Unicode("700px").tag(sync=True)
+
+  
 
 '''    def __init__(self):
         super().__init__()
