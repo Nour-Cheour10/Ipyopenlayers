@@ -6,16 +6,19 @@ import traitlets as tt
 from IPython.display import display, HTML
 import json
 
-
+def_loc = [0.0, 0.0]
 try:
     __version__ = importlib.metadata.version("anywidget_n")
 except importlib.metadata.PackageNotFoundError:
     __version__ = "unknown"
 
+
+
 class Map (anywidget.AnyWidget):  
     _esm = pathlib.Path("src/IpyOpenLayer_repr/static/widget.js")
     _css = pathlib.Path("src/IpyOpenLayer_repr/static/widget.css")
     DIMS = tt.Unicode("650px").tag(sync=True)
+    getCenter = tt.List(def_loc).tag(sync=True, o=True)
 
   
 

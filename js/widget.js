@@ -5,8 +5,12 @@ import View from 'ol/View.js';
 import 'ol/ol.css';
 
 function render({ model, el }) {
+
+    
   let DIMS = () => model.get("DIMS")
-  el.style.height=model.get("DIMS")      
+  el.style.height=DIMS()
+  let getCenter = () => model.get("getCenter")
+    
   const map = new Map({
     layers: [
       new TileLayer({
@@ -15,13 +19,27 @@ function render({ model, el }) {
     ],
     target: el,
     view: new View({
-      center: [0, 0],
+      center: getCenter(),
       zoom: 2,
     }),
   });
-    console.log(el.style.height)
-    console.log(DIMS)
+    
+    console.log(el.style.height);
+    console.log(getCenter());
+    
+    function on_center_change() { 
+    console.log(`hello`);
+    const newCenter = getCenter();
+    console.log(`The 'center' changed to: ${newCenter}`);
+    map.getView().adjustCenter(newCenter);
+  }
+    
+  // Ecoute des changements de centre du modèle
+  model.on("change:getCenter", on_center_change);  
 }
+    
+
+
 export default { render };
 
 /*
