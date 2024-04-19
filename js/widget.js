@@ -1,12 +1,12 @@
-/*import Map from 'ol/Map.js';
+import Map from 'ol/Map.js';
 import OSM from 'ol/source/OSM.js';
 import TileLayer from 'ol/layer/Tile.js';
 import View from 'ol/View.js';
 import 'ol/ol.css';
 
 function render({ model, el }) {
-  let dims = () => model.get("DIMS")
-  model.set("el.style.height",dims)  
+  let DIMS = () => model.get("DIMS")
+  el.style.height=model.get("DIMS")      
   const map = new Map({
     layers: [
       new TileLayer({
@@ -22,9 +22,9 @@ function render({ model, el }) {
     console.log(el.style.height)
     console.log(DIMS)
 }
-export default { model, el };
-*/
+export default { render };
 
+/*
 import Map from 'ol/Map.js';
 import OSM from 'ol/source/OSM.js';
 import TileLayer from 'ol/layer/Tile.js';
@@ -35,8 +35,8 @@ import 'ol/ol.css';
 function render({ model, el }) {
      function on_change() {   
           let DIMS = () => model.get("DIMS")
-          console.log(`The 'my_value' changed to: ${DIMS}`);
-          el.style.height = DIMS;
+          console.log(`The 'my_value' changed to: ${model.get("DIMS")}`);
+          el.style.height = model.get("DIMS");
           console.log(`height: ${el.style.height}`)
        }
      model.on("change:DIMS", on_change);
@@ -60,3 +60,4 @@ function render({ model, el }) {
 }
 
 export default { render };
+*/
