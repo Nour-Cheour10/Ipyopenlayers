@@ -3,13 +3,23 @@ import OSM from 'ol/source/OSM.js';
 import TileLayer from 'ol/layer/Tile.js';
 import View from 'ol/View.js';
 import 'ol/ol.css';
+import { useGeographic } from 'ol/proj';
 
-function render({ model, el }) {
+useGeographic();
 
+
+function render({ model, el }) { 
     
-  let DIMS = () => model.get("DIMS")
-  el.style.height=DIMS()
-  let getCenter = () => model.get("getCenter")
+/*  let DIMS = () => model.get("DIMS")
+  el.style.height=DIMS()*/
+  function on_change() {   
+          let DIMS = () => model.get("DIMS")
+          console.log(`The 'my_value' changed to: ${model.get("DIMS")}`);
+          el.style.height = DIMS();
+          console.log(`height: ${el.style.height}`)
+       }
+     model.on("change:DIMS", on_change);
+  let center = () => model.get("center")
     
   const map = new Map({
     layers: [
@@ -19,26 +29,23 @@ function render({ model, el }) {
     ],
     target: el,
     view: new View({
-      center: getCenter(),
+      center: center(),
       zoom: 2,
     }),
-  });
-    
+  });    
     console.log(el.style.height);
-    console.log(getCenter());
+    console.log(center());
     
     function on_center_change() { 
-    console.log(`hello`);
-    const newCenter = getCenter();
+    const newCenter = center();
     console.log(`The 'center' changed to: ${newCenter}`);
-    map.getView().adjustCenter(newCenter);
+    map.getView().setCenter(newCenter);
+    console.log(map.getView().getCenter())
   }
     
   // Ecoute des changements de centre du modèle
-  model.on("change:getCenter", on_center_change);  
-}
-    
-
+  model.on("change:center", on_center_change);  
+}    
 
 export default { render };
 

@@ -6,7 +6,7 @@ import traitlets as tt
 from IPython.display import display, HTML
 import json
 
-def_loc = [0.0, 0.0]
+def_loc = [0.9, 0.6]
 try:
     __version__ = importlib.metadata.version("anywidget_n")
 except importlib.metadata.PackageNotFoundError:
@@ -17,8 +17,8 @@ except importlib.metadata.PackageNotFoundError:
 class Map (anywidget.AnyWidget):  
     _esm = pathlib.Path("src/IpyOpenLayer_repr/static/widget.js")
     _css = pathlib.Path("src/IpyOpenLayer_repr/static/widget.css")
-    DIMS = tt.Unicode("650px").tag(sync=True)
-    getCenter = tt.List(def_loc).tag(sync=True, o=True)
+    DIMS = tt.Unicode("400px").tag(sync=True)
+    center = tt.List(def_loc).tag(sync=True, o=True)
 
   
 
@@ -40,8 +40,8 @@ class Map (anywidget.AnyWidget):
          
      def get_all_layers():
         return super().getAllLayers()
-'''
-        
+
+'''       
 class MapTile (anywidget.AnyWidget):
 
     _esm = pathlib.Path().joinpath("src","IpyOpenLayer_repr","static","CanvasTiles.js")
@@ -49,4 +49,14 @@ class MapTile (anywidget.AnyWidget):
     
 class Cartodb (anywidget.AnyWidget):
     _esm = pathlib.Path().joinpath("src","IpyOpenLayer_repr","static","Cartodb.js")
-    value = tt.Unicode().tag(sync=True)
+    value = tt.Unicode('0').tag(sync=True)
+
+    
+class Layer (anywidget.AnyWidget):
+    _esm = pathlib.Path().joinpath("src","IpyOpenLayer_repr","static","layer.js")
+    layer = tt.Unicode().tag(sync=True)
+
+    
+class CartodbLayer (anywidget.AnyWidget):
+    _esm = pathlib.Path().joinpath("src","IpyOpenLayer_repr","static","CartodbLayer.js")
+    cartodbLayer = tt.Unicode('hello').tag(sync=True)
